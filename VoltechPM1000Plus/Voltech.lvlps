@@ -1,0 +1,25 @@
+[ProjectWindow_Data]
+ProjectExplorer.ClassicPosition[String] = "99,79,648,451"
+
+[AB_Cache_{DF0A3184-F156-44E7-B482-03C9656F0299}]
+Cache_ProjSymbolChksum[String] = "7dea362b3fac8e00956a4952a3d4f474"
+Cache_TargetSymbolChksum[String] = "7dea362b3fac8e00956a4952a3d4f474"
+Cache_MyCompChksum[String] = "6ba44a7e90fc684fb4ef50b2d242fcbe"
+Cache_GenFile_Count[Integer] = 1
+Cache_GenFile[0][Path] Line0001 = "/C/Users/calplug-fileserver/builds/Voltech/w"
+Cache_GenFile[0][Path] Line0002 = "s/WebService.lvws"
+Cache_GenGUID_Count[Integer] = 1
+Cache_GenGUID[0][String] = "{FECB2709-5660-48F8-A4D4-6FE5AB8A47FE}"
+Cache_OutputDir[Path] = "/C/Users/calplug-fileserver/builds/Voltech/ws"
+
+[AB_Cache_{0B94022C-9890-4F2F-9BAA-46B062AE231C}]
+Cache_ProjSymbolChksum[String] = "7dea362b3fac8e00956a4952a3d4f474"
+Cache_TargetSymbolChksum[String] = "7dea362b3fac8e00956a4952a3d4f474"
+Cache_MyCompChksum[String] = "6ba44a7e90fc684fb4ef50b2d242fcbe"
+Cache_GenFile_Count[Integer] = 1
+Cache_GenFile[0][Path] Line0001 = "/C/Users/calplug-fileserver/builds/Voltech/w"
+Cache_GenFile[0][Path] Line0002 = "s/WebService.lvws"
+Cache_GenGUID_Count[Integer] = 1
+Cache_GenGUID[0][String] = "{FECB2709-5660-48F8-A4D4-6FE5AB8A47FE}"
+Cache_OutputDir[Path] = "/C/Users/calplug-fileserver/builds/Voltech/ws"
+

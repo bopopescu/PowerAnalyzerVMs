@@ -1,0 +1,8 @@
+<Array>
+<Name></Name>
+<Dimsize>1</Dimsize>
+<DBL>
+<Name></Name>
+<Val>18.29500000000000</Val>
+</DBL>
+</Array>

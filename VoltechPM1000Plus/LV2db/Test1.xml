@@ -1,0 +1,13 @@
+<?xml version='1.0' standalone='yes' ?>
+<LVData xmlns="http://www.ni.com/LVData">
+<Version>11.0</Version>
+<Array>
+<Name>2D-Array</Name>
+<Dimsize>0</Dimsize>
+<Dimsize>0</Dimsize>
+<DBL>
+<Name></Name>
+<Val></Val>
+</DBL>
+</Array>
+</LVData>

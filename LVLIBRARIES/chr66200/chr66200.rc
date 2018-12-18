@@ -1,0 +1,680 @@
+explicitActiveChannels: TRUE
+library: chr66200_*.*
+
+class: "chr66200"
+flags: 0
+sorted: no
+implements: ivi, iviResourceMgr
+
+
+attribute: "Range Check"
+	"Inherent IVI Properties:User Options:Range Check"
+	bool readwrite 1 100592
+	//const: CHR66200_ATTR_RANGE_CHECK
+"Specifies whether to validate attribute values and function parameters.  If enabled, the instrument driver validates the parameter values that you pass to driver functions.  Range checking parameters is very useful for debugging.  After you validate your program, you can set this attribute to VI_FALSE (0)  to disable range checking and maximize performance.
+    The default value is VI_TRUE (1) .   Use the chr66200_InitWithOptions function to override this value.
+    
+
+VI_TRUE (1)
+True
+
+VI_FALSE (0)
+False
+
+"
+attribute: "Query Instrument Status"
+	"Inherent IVI Properties:User Options:Query Instrument Status"
+	bool readwrite 1 100593
+	//const: CHR66200_ATTR_QUERY_INSTR_STATUS
+"Specifies whether the instrument driver queries the instrument status after each operation.  Querying the instrument status is very useful for debugging.  After you validate your program, you can set this attribute to VI_FALSE (0)  to disable status checking and maximize performance
+    The instrument driver can choose to ignore status checking for particular attributes regardless of the setting of this attribute.
+    The default value is VI_TRUE (1) .   Use the chr66200_InitWithOptions function to override this value.
+    
+
+VI_TRUE (1)
+True
+
+VI_FALSE (0)
+False
+
+"
+attribute: "Cache"
+	"Inherent IVI Properties:User Options:Cache"
+	bool readwrite 1 100594
+	//const: CHR66200_ATTR_CACHE
+"Specifies whether to cache the value of attributes.  When caching is enabled, the instrument driver keeps track of the current instrument settings and avoids sending redundant commands to the instrument.  Thus, you can significantly increase execution speed.
+    The instrument driver can choose always to cache or never to cache particular attributes regardless of the setting of this attribute.
+    The default value is VI_TRUE (1) .   Use the chr66200_InitWithOptions function to override this value.
+    
+
+VI_TRUE (1)
+True
+
+VI_FALSE (0)
+False
+
+"
+attribute: "Simulate"
+	"Inherent IVI Properties:User Options:Simulate"
+	bool readwrite 1 100595
+	//const: CHR66200_ATTR_SIMULATE
+"Specifies whether or not to simulate instrument driver I/O operations.  If simulation is enabled, instrument driver functions perform range checking and call Ivi_GetAttribute and Ivi_SetAttribute functions, but they do not perform instrument I/O.  For output parameters that represent instrument data, the instrument driver functions return calculated values.
+    The default value is VI_FALSE (0) .   Use the chr66200_InitWithOptions function to override this value.
+    
+
+VI_TRUE (1)
+True
+
+VI_FALSE (0)
+False
+
+"
+attribute: "Record Value Coercions"
+	"Inherent IVI Properties:User Options:Record Value Coercions"
+	bool readwrite 1 100596
+	//const: CHR66200_ATTR_RECORD_COERCIONS
+"Specifies whether the IVI engine keeps a list of the value coercions it makes for ViInt32 and ViReal64 attributes.  You call chr66200_GetNextCoercionRecord to extract and delete the oldest coercion record from the list.
+    The default value is VI_FALSE (0) .   Use the chr66200_InitWithOptions function to override this value.
+    
+
+VI_TRUE (1)
+True
+
+VI_FALSE (0)
+False
+
+"
+attribute: "Description"
+	"Inherent IVI Properties:Driver Identification:Description"
+	string readonly 1 100792
+	//const: CHR66200_ATTR_SPECIFIC_DRIVER_DESCRIPTION
+"A string that contains a brief description of the specific driver
+    
+
+"
+attribute: "Driver Prefix"
+	"Inherent IVI Properties:Driver Identification:Driver Prefix"
+	string readonly 1 1006BE
+	//const: CHR66200_ATTR_SPECIFIC_DRIVER_PREFIX
+"A string that contains the prefix for the instrument driver.  The name of each user-callable function in this driver starts with this prefix.
+    
+
+"
+attribute: "Driver Vendor"
+	"Inherent IVI Properties:Driver Identification:Driver Vendor"
+	string readonly 1 100791
+	//const: CHR66200_ATTR_SPECIFIC_DRIVER_VENDOR
+"A string that contains the name of the vendor that supplies this driver.
+    
+
+"
+attribute: "Major Version"
+	"Inherent IVI Properties:Driver Identification:Major Version"
+	iL readonly 1 100787
+	//const: CHR66200_ATTR_SPECIFIC_DRIVER_MAJOR_VERSION
+"The major version number of this instrument driver.
+    
+
+"
+attribute: "Minor Version"
+	"Inherent IVI Properties:Driver Identification:Minor Version"
+	iL readonly 1 100788
+	//const: CHR66200_ATTR_SPECIFIC_DRIVER_MINOR_VERSION
+"The minor version number of this instrument driver.
+    
+
+"
+attribute: "Revision"
+	"Inherent IVI Properties:Driver Identification:Revision"
+	string readonly 1 1007B7
+	//const: CHR66200_ATTR_SPECIFIC_DRIVER_REVISION
+"A string that contains additional version information about this instrument driver.
+    
+
+"
+attribute: "Class Specification Major Version"
+	"Inherent IVI Properties:Driver Identification:Class Specification Major Version"
+	iL readonly 1 100793
+	//const: CHR66200_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION
+"The major version number of the class specification with which this driver is compliant.
+    
+
+"
+attribute: "Class Specification Minor Version"
+	"Inherent IVI Properties:Driver Identification:Class Specification Minor Version"
+	iL readonly 1 100794
+	//const: CHR66200_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION
+"The minor version number of the class specification with which this driver is compliant.
+    
+
+"
+attribute: "Supported Instrument Models"
+	"Inherent IVI Properties:Driver Capabilities:Supported Instrument Models"
+	string readonly 1 1006D7
+	//const: CHR66200_ATTR_SUPPORTED_INSTRUMENT_MODELS
+"Contains a model code of the instrument. For drivers that support more than one device, this attribute contains a comma-separated list of supported instrument models.
+    
+
+"
+attribute: "Class Group Capabilities"
+	"Inherent IVI Properties:Driver Capabilities:Class Group Capabilities"
+	string readonly 1 100721
+	//const: CHR66200_ATTR_GROUP_CAPABILITIES
+"A string that contains a comma-separated list of class-extention groups that this driver implements.
+    
+
+"
+attribute: "Number of Channels"
+	"Inherent IVI Properties:Driver Capabilities:Number of Channels"
+	iL readonly 1 10065B
+	//const: CHR66200_ATTR_NUM_CHANNELS
+"Indicates the number of channels that the specific instrument driver supports.  
+    For each attribute for which the IVI_VAL_MULTI_CHANNEL (1024)  flag attribute is set, the IVI engine maintains a separate cache value for each channel.
+    
+
+"
+attribute: "Manufacturer"
+	"Inherent IVI Properties:Instrument Identification:Manufacturer"
+	string readonly 1 10078F
+	//const: CHR66200_ATTR_INSTRUMENT_MANUFACTURER
+"A string that contains the name of the instrument manufacturer you are currently using.
+    
+
+"
+attribute: "Model"
+	"Inherent IVI Properties:Instrument Identification:Model"
+	string readonly 1 100790
+	//const: CHR66200_ATTR_INSTRUMENT_MODEL
+"A string that contains the model number or name of the instrument that you are currently using.
+    
+
+"
+attribute: "Firmware Revision"
+	"Inherent IVI Properties:Instrument Identification:Firmware Revision"
+	string readonly 1 10078E
+	//const: CHR66200_ATTR_INSTRUMENT_FIRMWARE_REVISION
+"A string that contains the firmware revision information for the instrument you are currently using.
+    
+
+"
+attribute: "Primary Error"
+	"Inherent IVI Properties:Error Info:Primary Error"
+	iL readwrite 1 1005F5
+	//const: CHR66200_ATTR_PRIMARY_ERROR
+"A code that describes the first error that occurred since the last call to chr66200_GetErrorInfo on the session.  The value follows the VXIplug&play completion code conventions.  A negative value describes an error condition.  A positive value describes a warning condition and indicates that no error occurred.  A zero indicates that no error or warning occurred. The error and warning values can be status codes defined by IVI, VISA, class drivers, or specific drivers.
+    
+
+"
+attribute: "Secondary Error"
+	"Inherent IVI Properties:Error Info:Secondary Error"
+	iL readwrite 1 1005F6
+	//const: CHR66200_ATTR_SECONDARY_ERROR
+"An optional code that provides additional information concerning the primary error condition.  The error and warning values can be status codes defined by IVI, VISA, class drivers, or specific drivers.  Zero indicates no additional information.
+    
+
+"
+attribute: "Error Elaboration"
+	"Inherent IVI Properties:Error Info:Error Elaboration"
+	string readwrite 1 1005F7
+	//const: CHR66200_ATTR_ERROR_ELABORATION
+"An optional string that contains additional information concerning the primary error condition.
+    
+
+"
+attribute: "Logical Name"
+	"Inherent IVI Properties:Advanced Session Information:Logical Name"
+	string readonly 1 1006C1
+	//const: CHR66200_ATTR_LOGICAL_NAME
+"A string containing the logical name you specified when opening the current IVI session.
+     You may pass a logical name to the chr66200_init or chr66200_InitWithOptions functions.  The IVI Configuration utility must contain an entry for the logical name.  The logical name entry refers to a virtual instrument section in the IVI Configuration file.  The virtual instrument section specifies a physical device and initial user options.
+    
+
+"
+attribute: "Resource Descriptor"
+	"Inherent IVI Properties:Advanced Session Information:Resource Descriptor"
+	string readonly 1 1006C0
+	//const: CHR66200_ATTR_RESOURCE_DESCRIPTOR
+"Indicates the resource descriptor the driver uses to identify the physical device.
+    If you initialize the driver with a logical name, this attribute contains the resource descriptor that corresponds to the entry in the IVI Configuration utility.  
+    If you initialize the instrument driver with the resource descriptor, this attribute contains that value.
+    
+
+"
+attribute: "I/O Session Type"
+	"Inherent IVI Properties:Advanced Session Information:I/O Session Type"
+	string readonly 1 1006D4
+	//const: CHR66200_ATTR_IO_SESSION_TYPE
+"Contains the type of the I/O session that this driver uses to communicate with the instrument.     
+
+"
+attribute: "Instrument I/O Session"
+	"Inherent IVI Properties:Advanced Session Information:Instrument I/O Session"
+	uL readonly 1 1006D2
+	//const: CHR66200_ATTR_IO_SESSION
+"Specifies the I/O session that the specific driver uses to communicate with the instrument.
+    
+
+"
+attribute: "CHR66200_ATTR_CURR_SHUNT"
+	"Source Properties:CHR66200_ATTR_CURR_SHUNT"
+	iL enum { CHR66200_VAL_SHUNT_LOW=0, CHR66200_VAL_SHUNT_HIGH=1, CHR66200_VAL_SHUNT_AUTO=2 } readwrite 1 118C32
+	//const: CHR66200_ATTR_CURR_SHUNT
+"Specifies the shunt range to the power meter.
+
+Valid Range:
+0 - shunt range sets to LOW
+1 - shunt range sets to HIGH
+2 - shunt range sets to AUTO
+
+Default Value: 0
+
+
+CHR66200_VAL_SHUNT_LOW (0)
+shunt range sets to LOW
+
+CHR66200_VAL_SHUNT_HIGH (1)
+shunt range sets to HIGH
+
+CHR66200_VAL_SHUNT_AUTO (2)
+shunt range sets to AUTO
+
+"
+attribute: "CHR66200_ATTR_CURR_RANGE"
+	"Source Properties:CHR66200_ATTR_CURR_RANGE"
+	iL enum { CHR66200_VAL_CURR_RANGE_A001=0, CHR66200_VAL_CURR_RANGE_A01=1, CHR66200_VAL_CURR_RANGE_A04=2, CHR66200_VAL_CURR_RANGE_A2L=3, CHR66200_VAL_CURR_RANGE_A02=4, CHR66200_VAL_CURR_RANGE_A2H=5, CHR66200_VAL_CURR_RANGE_A8=6, CHR66200_VAL_CURR_RANGE_A20=7, CHR66200_VAL_CURR_RANGE_AUTO=8 } readwrite 1 118C33
+	//const: CHR66200_ATTR_CURR_RANGE
+"Specifies the current range to the power meter.
+
+Valid Range:
+Model 66201:
+0 - current range sets to 0.01A
+1 - current range sets to 0.1A
+2 - current range sets to 0.4A
+3 - current range sets to 2A
+8 - current range sets to ATUO
+
+Model 66202:
+0 - current range sets to 0.01A
+1 - current range sets to 0.1A
+2 - current range sets to 0.4A
+3 - current range sets to 2A-L
+4 - current range sets to 0.2A
+5 - current range sets to 2A-H
+6 - current range sets to 8A
+7 - current range sets to 20A
+8 - current range sets to ATUO
+
+Default Value: 8
+
+
+CHR66200_VAL_CURR_RANGE_A001 (0)
+current range sets to 0.01A
+
+CHR66200_VAL_CURR_RANGE_A01 (1)
+current range sets to 0.1A
+
+CHR66200_VAL_CURR_RANGE_A04 (2)
+current range sets to 0.4A
+
+CHR66200_VAL_CURR_RANGE_A2L (3)
+current range sets to 2A-L
+
+CHR66200_VAL_CURR_RANGE_A02 (4)
+current range sets to 0.2A
+
+CHR66200_VAL_CURR_RANGE_A2H (5)
+current range sets to 2A-H
+
+CHR66200_VAL_CURR_RANGE_A8 (6)
+current range sets to 8A
+
+CHR66200_VAL_CURR_RANGE_A20 (7)
+current range sets to 20A
+
+CHR66200_VAL_CURR_RANGE_AUTO (8)
+current range sets to AUTO
+
+"
+attribute: "CHR66200_ATTR_INRUSH_LEVEL"
+	"Source Properties:CHR66200_ATTR_INRUSH_LEVEL"
+	iL readwrite 1 118C34
+	//const: CHR66200_ATTR_INRUSH_LEVEL
+"Specifies the inrush trigger level to the power meter.
+
+Units: amps
+
+Valid Range: 1-10
+   
+Default Value: 1
+
+"
+attribute: "CHR66200_ATTR_INRUSH_TIME"
+	"Source Properties:CHR66200_ATTR_INRUSH_TIME"
+	iL readwrite 1 118C35
+	//const: CHR66200_ATTR_INRUSH_TIME
+"Specifies the inrush trigger time to the power meter.
+
+Units: milisecond
+
+Valid Range: 1-9999
+   
+Default Value: 100
+
+"
+attribute: "CHR66200_ATTR_INRUSH_DELAY"
+	"Source Properties:CHR66200_ATTR_INRUSH_DELAY"
+	iL readwrite 1 118C36
+	//const: CHR66200_ATTR_INRUSH_DELAY
+"Specifies the inrush trigger delay to the power meter.
+
+Units: milisecond
+
+Valid Range: 0-9999
+   
+Default Value: 2
+
+"
+attribute: "CHR66200_ATTR_VOLT_RANGE"
+	"Source Properties:CHR66200_ATTR_VOLT_RANGE"
+	iL enum { CHR66200_VAL_VOLT_RANGE_V150=0, CHR66200_VAL_VOLT_RANGE_V300=1, CHR66200_VAL_VOLT_RANGE_V500=2, CHR66200_VAL_VOLT_RANGE_AUTO=3 } readwrite 1 118C37
+	//const: CHR66200_ATTR_VOLT_RANGE
+"Specifies the voltage range to the power meter.
+
+Valid Range:
+0 - voltage range sets to 150V
+1 - voltage range sets to 300V
+2 - voltage range sets to 500V
+3 - voltage range sets to AUTO
+
+Default Value: 3
+
+
+CHR66200_VAL_VOLT_RANGE_V150 (0)
+voltage range sets to 150V
+
+CHR66200_VAL_VOLT_RANGE_V300 (1)
+voltage range sets to 300V
+
+CHR66200_VAL_VOLT_RANGE_V500 (2)
+voltage range sets to 500V
+
+CHR66200_VAL_VOLT_RANGE_AUTO (3)
+voltage range sets to AUTO
+
+"
+attribute: "CHR66200_ATTR_MEAS_MODE"
+	"Source Properties:CHR66200_ATTR_MEAS_MODE"
+	bool readwrite 1 118C48
+	//const: CHR66200_ATTR_MEAS_MODE
+"Specifies the measure mode to the power meter.
+
+Valid Range:
+VI_TRUE  (1) - Measure Mode sets to Window
+VI_FALSE (0) - Measure Mode sets to Average
+
+Default Value: VI_TRUE
+
+VI_TRUE (1)
+True
+
+VI_FALSE (0)
+False
+
+"
+attribute: "CHR66200_ATTR_AVERAGE"
+	"Source Properties:CHR66200_ATTR_AVERAGE"
+	iL readwrite 1 118C38
+	//const: CHR66200_ATTR_AVERAGE
+"Specifies the average to the power meter.
+
+Valid Range: 1-512
+   
+Default Value: 4
+
+"
+attribute: "CHR66200_ATTR_WINDOW"
+	"Source Properties:CHR66200_ATTR_WINDOW"
+	fD readwrite 1 118C49
+	//const: CHR66200_ATTR_WINDOW
+"Specifies the window time to the power meter.
+
+Units: second
+
+Valid Range: 0.5-10, resolution 0.5
+   
+Default Value: 4.0
+
+"
+attribute: "CHR66200_ATTR_POWER_INTEGRATE"
+	"Source Properties:CHR66200_ATTR_POWER_INTEGRATE"
+	iL readwrite 1 118C39
+	//const: CHR66200_ATTR_POWER_INTEGRATE
+"Specifies the power integrate time to the power meter.
+
+Units: second
+
+Valid Range: 0-9999
+   
+Default Value: 0
+
+"
+attribute: "CHR66200_ATTR_FILTER"
+	"Source Properties:CHR66200_ATTR_FILTER"
+	bool readwrite 1 118C3A
+	//const: CHR66200_ATTR_FILTER
+"To switch the low pass filter.
+
+Valid Range:
+VI_TRUE  (1) - Filter sets to ON
+VI_FALSE (0) - Filter sets to OFF
+
+Default Value: VI_TRUE
+
+VI_TRUE (1)
+True
+
+VI_FALSE (0)
+False
+
+"
+attribute: "CHR66200_ATTR_ENERGY_MODE"
+	"Source Properties:CHR66200_ATTR_ENERGY_MODE"
+	bool readwrite 1 118C46
+	//const: CHR66200_ATTR_ENERGY_MODE
+"Specifies the energy mode to the power meter.
+
+Valid Range:
+VI_TRUE  (1) - Energy mode sets to JOULE
+VI_FALSE (0) - Energy mode sets to W-HR
+
+Default Value: VI_TRUE
+
+VI_TRUE (1)
+True
+
+VI_FALSE (0)
+False
+
+"
+attribute: "CHR66200_ATTR_ENERGY_TIME"
+	"Source Properties:CHR66200_ATTR_ENERGY_TIME"
+	iL readwrite 1 118C3B
+	//const: CHR66200_ATTR_ENERGY_TIME
+"Specifies the energy time to the power meter.
+
+Units: second
+
+Valid Range: 0-9999
+   
+Default Value: 0
+
+"
+attribute: "CHR66200_ATTR_THD_MODE"
+	"Source Properties:CHR66200_ATTR_THD_MODE"
+	bool readwrite 1 118C3C
+	//const: CHR66200_ATTR_THD_MODE
+"Specifies the THD mode to the power meter.
+
+Valid Range:
+VI_TRUE  (1) - THD mode sets to FULL
+VI_FALSE (0) - THD mode sets to ORDER
+
+Default Value: VI_TRUE
+
+VI_TRUE (1)
+True
+
+VI_FALSE (0)
+False
+
+"
+attribute: "CHR66200_ATTR_THD_ORDER"
+	"Source Properties:CHR66200_ATTR_THD_ORDER"
+	iL readwrite 1 118C3D
+	//const: CHR66200_ATTR_THD_ORDER
+"Specifies the THD order to the power meter.
+
+Valid Range: 2-100
+   
+Default Value: 13
+
+"
+attribute: "CHR66200_ATTR_TRIGGER_MODE"
+	"Source Properties:CHR66200_ATTR_TRIGGER_MODE"
+	iL enum { CHR66200_VAL_TRIGGER_NONE=0, CHR66200_VAL_TRIGGER_GONG=1, CHR66200_VAL_TRIGGER_INRUSH=2, CHR66200_VAL_TRIGGER_ENERGY=3 } readwrite 1 118C47
+	//const: CHR66200_ATTR_TRIGGER_MODE
+"Specifies the trigger mode to the power meter.
+
+Valid Range:
+Model 66201:
+0 - trigger mode sets to NONE
+1 - trigger mode sets to GONG
+
+Model 66202:
+0 - trigger mode sets to NONE
+1 - trigger mode sets to GONG
+2 - trigger mode sets to INRUSH
+3 - trigger mode sets to ENERGY
+
+Default Value: 0
+
+
+CHR66200_VAL_TRIGGER_NONE (0)
+trigger mode sets to NONE
+
+CHR66200_VAL_TRIGGER_GONG (1)
+trigger mode sets to GONG
+
+CHR66200_VAL_TRIGGER_INRUSH (2)
+trigger mode sets to INRUSH
+
+CHR66200_VAL_TRIGGER_ENERGY (3)
+trigger mode sets to ENERGY
+
+"
+attribute: "CHR66200_ATTR_COMPARATOR"
+	"Calculate Properties:CHR66200_ATTR_COMPARATOR"
+	bool readwrite 1 118C3E
+	//const: CHR66200_ATTR_COMPARATOR
+"Pass the comparator to the power meter.
+
+Valid Range:
+VI_TRUE  (1) - comparator sets to ON
+VI_FALSE (0) - comparator sets to OFF
+
+Default Value: VI_FALSE
+
+VI_TRUE (1)
+True
+
+VI_FALSE (0)
+False
+
+"
+attribute: "CHR66200_ATTR_COMPARATOR_TIME"
+	"Calculate Properties:CHR66200_ATTR_COMPARATOR_TIME"
+	iL readwrite 1 118C3F
+	//const: CHR66200_ATTR_COMPARATOR_TIME
+"Pass the comparator time to the power meter.
+
+Units: second
+
+Valid Range: 0-9999
+   
+Default Value: 0
+
+"
+attribute: "CHR66200_ATTR_STATUS_ESE"
+	"Status Properties:CHR66200_ATTR_STATUS_ESE"
+	iL readwrite 1 118C40
+	//const: CHR66200_ATTR_STATUS_ESE
+"Specifies the standard event status enable register to the power meter.
+
+Valid Range: 0-255
+   
+Default Value: 0
+
+"
+attribute: "CHR66200_ATTR_STATUS_SRE"
+	"Status Properties:CHR66200_ATTR_STATUS_SRE"
+	iL readwrite 1 118C41
+	//const: CHR66200_ATTR_STATUS_SRE
+"Specifies the service request enable register to the power meter.
+
+Valid Range: 0-255
+   
+Default Value: 0
+
+"
+attribute: "CHR66200_ATTR_STATUS_OPERATION_ENABLE"
+	"Status Properties:CHR66200_ATTR_STATUS_OPERATION_ENABLE"
+	iL readwrite 1 118C42
+	//const: CHR66200_ATTR_STATUS_OPERATION_ENABLE
+"Specifies the Operation Status Enable register to the power meter.
+
+Valid Range: 0-255
+   
+Default Value: 0
+
+"
+attribute: "CHR66200_ATTR_STATUS_QUESTIONABLE_ENABLE"
+	"Status Properties:CHR66200_ATTR_STATUS_QUESTIONABLE_ENABLE"
+	iL readwrite 1 118C43
+	//const: CHR66200_ATTR_STATUS_QUESTIONABLE_ENABLE
+"Specifies the Questionable Enable register to the power meter.
+
+Valid Range: 0-65535
+   
+Default Value: 0
+
+"
+attribute: "CHR66200_ATTR_STATUS_QUESTIONABLE_NTR"
+	"Status Properties:CHR66200_ATTR_STATUS_QUESTIONABLE_NTR"
+	iL readwrite 1 118C44
+	//const: CHR66200_ATTR_STATUS_QUESTIONABLE_NTR
+"Specifies the Questionable NTR register to the power meter.
+
+Valid Range: 0-65535
+   
+Default Value: 0
+
+"
+attribute: "CHR66200_ATTR_STATUS_QUESTIONABLE_PTR"
+	"Status Properties:CHR66200_ATTR_STATUS_QUESTIONABLE_PTR"
+	iL readwrite 1 118C45
+	//const: CHR66200_ATTR_STATUS_QUESTIONABLE_PTR
+"Specifies the Questionable PTR register to the power meter.
+
+Valid Range: 0-65535
+   
+Default Value: 0
+
+"
+attribute: "ID Query Response"
+	"Miscellaneous Properties:ID Query Response"
+	string readonly 1 118C31
+	//const: CHR66200_ATTR_ID_QUERY_RESPONSE
+"Returns the ID Query response string.  The instrument driver gets the value of this attribute when you pass VI_TRUE (1)  for the ID Query parameter to the chr66200_init or chr66200_InitWithOptions function.
+    
+
+"
